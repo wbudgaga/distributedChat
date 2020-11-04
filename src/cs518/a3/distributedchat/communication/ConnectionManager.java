@@ -15,13 +15,13 @@ import cs518.a3.distributedchat.wireformates.Message;
 import cs518.a3.distributedchat.wireformates.MessageFactory;
 
 public class ConnectionManager {
-	private ListeningTask 		listeningTask ;
-	private	MessageHandler		messageHandler;
-	private	ThreadPoolManager	threadPoolManager;
+	private ListeningTask listeningTask ;
+	private	MessageHandler	messageHandler;
+	private	ThreadPoolManager threadPoolManager;
 	
 	public ConnectionManager(MessageHandler	messageHandler, ThreadPoolManager	threadPoolManager){
-		this.messageHandler 	= messageHandler;
-		this.threadPoolManager 	= threadPoolManager;
+		this.messageHandler 		= messageHandler;
+		this.threadPoolManager 		= threadPoolManager;
 	}
 	
 	public void handleConnection(Socket connection) throws IOException{
