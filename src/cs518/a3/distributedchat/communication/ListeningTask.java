@@ -9,11 +9,11 @@ import cs518.a3.distributedchat.threadpool.Task;
 
 // it is a thread class that is responsible for accepting new incoming connections.
 public class ListeningTask extends Task{
-	private ServerSocket 	serverSocket;
+	private ServerSocket serverSocket;
 	private ConnectionManager connectionManager;
 
 	 public ListeningTask(int port, ConnectionManager connectionManager) throws IOException{
-		 this.connectionManager = connectionManager;
+		 this.connectionManager 	= connectionManager;
 		 serverSocket 			= new ServerSocket(port,100);
 	 }
 	
