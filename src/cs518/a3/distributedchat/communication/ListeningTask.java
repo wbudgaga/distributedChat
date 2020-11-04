@@ -1,6 +1,5 @@
 package cs518.a3.distributedchat.communication;
 
-
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
