@@ -57,7 +57,7 @@ public class ConnectionManager {
 	
 	public static boolean isAlive(String hostAddress, int port){
 		try {
-			Socket socket 	= new Socket(hostAddress, port);
+			Socket socket 		= new Socket(hostAddress, port);
 			socket.close();
 			return true;
 		} catch (UnknownHostException e) {
@@ -68,7 +68,7 @@ public class ConnectionManager {
 	
 	public void sendMessage(Message msg, String hostAddress, int port){
 		try{
-			Socket socket 	= new Socket(hostAddress, port);
+			Socket socket 		= new Socket(hostAddress, port);
 			sendByteData(socket.getOutputStream(),msg.packMessage());
 		} catch (IOException e) {}
 	}
