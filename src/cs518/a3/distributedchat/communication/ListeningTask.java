@@ -18,10 +18,9 @@ public class ListeningTask extends Task{
 	 }
 	
 	 private void listening() throws IOException{	
-		 Socket connectionSocket = serverSocket.accept(); 
+		 Socket connectionSocket 	= serverSocket.accept(); 
 		 connectionManager.handleConnection(connectionSocket);
 	 }
-	 
 	 
 	 public void stop(){
 		try {
