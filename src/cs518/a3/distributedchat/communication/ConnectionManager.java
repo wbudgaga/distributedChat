@@ -86,5 +86,4 @@ public class ConnectionManager {
 		} catch (ClassNotFoundException e) {}
 		return null;
 	}
-
 }
