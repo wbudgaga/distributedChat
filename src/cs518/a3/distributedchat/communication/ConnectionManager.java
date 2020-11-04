@@ -33,12 +33,12 @@ public class ConnectionManager {
 	}
 	
 	public void handleMassage(Socket link, byte[] byteBuffer) throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException, NoSuchAlgorithmException{
-		Message msg =  MessageFactory.getInstance().createMessage(byteBuffer);
+		Message msg 			=  MessageFactory.getInstance().createMessage(byteBuffer);
 		msg.handle(link, messageHandler);
 	}
 	
 	public void startListening(int listeningPort) throws IOException{
-		listeningTask = new ListeningTask(listeningPort,this);
+		listeningTask 			= new ListeningTask(listeningPort,this);
 		threadPoolManager.addTask(listeningTask);
 	}
 
