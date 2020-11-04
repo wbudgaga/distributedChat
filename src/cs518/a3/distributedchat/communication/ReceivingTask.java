@@ -37,11 +37,11 @@ public class ReceivingTask extends Task{
 	}
 	
 	public static byte[] receiveMessageFrom(InputStream inStream) throws SocketException, IOException{
-		byte[] messageLength	= new byte[4];	
+		byte[] messageLength			= new byte[4];	
 		
-		if (inStream.read(messageLength, 0,4)<4)
-				return null;
-		int bodyLength 	= ByteStream.byteArrayToInt(messageLength); // reading the message length and removing the message header
+		if (inStream.read(messageLength, 0,4) < 4)
+			return null;
+		int bodyLength 				= ByteStream.byteArrayToInt(messageLength); // reading the message length and removing the message header
 		return readMessageBody(inStream,bodyLength);
 	}
 	
