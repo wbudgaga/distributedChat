@@ -43,7 +43,7 @@ public class ConnectionManager {
 	}
 
 	public void stopListening(){
-		if (listeningTask!= null)
+		if (listeningTask != null)
 			listeningTask.stop();
 	}
 	
