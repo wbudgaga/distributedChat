@@ -63,6 +63,5 @@ public class ReceivingTask extends Task{
 		} catch (ClassNotFoundException e) {e.printStackTrace();
 		} catch (NoSuchAlgorithmException e) {
 		}
-		
 	}	
 }
