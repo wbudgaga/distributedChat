@@ -46,8 +46,8 @@ public class ReceivingTask extends Task{
 	}
 	
 	 private void receivingMessage() throws SocketException, IOException, InstantiationException, IllegalAccessException, ClassNotFoundException, NoSuchAlgorithmException{
-		byte[] byteBuffer = receiveMessageFrom(this.inStream);
-		if (byteBuffer==null)
+		byte[] byteBuffer 			= receiveMessageFrom(this.inStream);
+		if (byteBuffer == null)
 			return;
 		connectionManager.handleMassage(link, byteBuffer);
 	}
