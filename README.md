@@ -30,7 +30,7 @@ When a chat client has a message that needs to be broadcast, it sends the messag
 
 
 ## Package Structure
-	The main folder contains :
+	The main folder contains:
 	
 - src: It contains java source files
 
@@ -42,11 +42,12 @@ When a chat client has a message that needs to be broadcast, it sends the messag
 
 - makefile: It is used to compile java classes(make all) and remove classes (make clean)
 
-- MANIFEST.MF: It is needed to create chatApp.jar.
+- MANIFEST.MF: It is needed to create chatApp.jar
 
 - ChatClient.sh: It is used to run chat application client and to create chatApp.jar if it does not exist
 
 - ChatServer.sh: It is used to run chat application server and to create chatApp.jar if it does not exist
 	
+- specification.txt: It includes detailed information about the application requirements and features
 
 
