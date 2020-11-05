@@ -1,0 +1,73 @@
+How the  issues are addressed:
+
+	- The max size of peer group is configurable. The Setting.java includes all configurable variables. The group size can not be  configured while the program is running because in this case 
+	  some groups might need to be rebalanced to meet the new group size which leads to reasign peers to new groups which is not pratical in 	  
+	  chat application. I think it is better to let the application to read it from text file when it starts. In This case we don't need to recompile the application each time we change the group size.
+
+	- There is chat group manager that is responsible for assigning peers to paritcular groups, removing dead pears, and offers peers' information to the ChatServer.
+	  Automatic rebalancing of the groups is not implemented because I think it isno pratical in such kind of applications. However, peers in overloaded group can leave and join again. 
+	  The joining of peers is always done to the smallest chat group.
+
+	- Each peer (ChatClient) has its own chat group containing all members belonging to it. The ChatServer owns the chat group manager which manages all chat groups. Any chat
+	  message is sent either to peer's chat group or to ChatServer (in case of broadcasting). Message sent to chat group will be forward by the chat group to all available
+	  memebers in that group. In the case of the message sent to ChatServer, ChatServer will ask its  chat group manager to broadcast it. The chat group manager will iterate
+	  over each chat group and ask each chat group to foward the message to its members. Each chat group will forward the message to all available memebers.
+
+	- Levels of hierarchy: (central chat server, chat group manager, group level, and client level). The central chat server do not know anything about chat groups and chat clients 
+	  in the system, but it can forward any request to and retrieve any information from the chat group manager. Chat client do not know anything about other groups and their 
+	  peers. It knows only its own chat group and the chat server. If the chat client wants to send message to its group's members, it will ask its own group to do that. If  it
+	  wants to broadcast a message, it will ask its own group to deliver the message to the members in its own group and it will ask the chat server to deliver the message to
+	  the members in other groups.
+
+Test Senario:
+	ChatClientTestApp object periodically  generates a random text and computes the its hash code. Then, it stores the hash code in a queue and broadcast the text.
+	Each chatClient object will receive the text, compute  its hashcode, show the hashcode in its window, and then send the hashcode to the sende(ChatClientTestApp).
+	When the ChatClientTestApp receives the replies from all chatClients, it will compare the received hashcode with the ones in its queue. 
+
+
+Packages descripting:
+	util	: contains a Helper class which contains two methods: one generates random number of bytes depends on a given parameter. The another method generates hash code of given bytes
+
+	threadpool: contains an implementation of thread pool which is represented by three classes (Task, Worker, ThreadPoolManager).
+
+	wireformates: contains
+		MessageType interface: contains constant information that represent the message types and the names of their corresponding classes.
+		MessageFactory class: it is responsible for creating instances of message classes depending on the message type.
+		collection of message classes: every class represents one message type and is able to pack and unpack itself.
+
+	communications: contains threa classes 
+		ConnectionManager class: manages the connections. it hides all the connections details. All connection operation can be  only performed through this class.
+		ListeningTask: it is task that can be given to the threadpool to execute. This task is responsible for accepting new incoming connections.
+		ReceivingTask: it is task that can be given to the threadpool to execute. This task is responsible for reading  incoming data from the connection.
+
+	handler: contains
+		MessageHandler abstract class: contains abstract methods that must be implemented by the ChatServerHanlder and ChatClientHandler.
+		ChatServerHanlder class: it handles any message received by the ChatServer by unmarsheling it and calling the corresponding method in ChatServer object
+		ChatClientHandler class: it handles any message received by the ChatClient by unmarsheling it and calling the corresponding method in ChatClient object
+
+	gui: contains
+		GUIFacade class: connects the gui model with the logical model. 
+		MainGUI class: It is the gui that is used by the ChatClient. The user of ChatClient can interact with this gui which asks GUIFacade object to perform any action
+
+
+	core:	it is the main package and contains
+		Setting class: contains the application global constants that have default values which can be modified to change the program behavior.
+		Node class: it is base class that contains all methods needed by any node (ChatClient and ChatServer)
+		ChatClient interface: contains all methods that must be implemented by any ChatClient class.
+		ChatClientImp class: extends the Node class and implements ChatClient. It represents an implementation of ChatClient.
+		ChatClientApp class: it a chat client application. It contains the main method and uses an object of type ChatClientImp.
+		GUIChatClient interface: it chat client interface that is available to the gui.
+		GUIChatClientImp class: This class is an implementation of Client interface which is the only part that can be seen by the gui model.
+		ChatGroup class: contains all operations that are needed to manage a chat group.
+		ChatGroupsManager class: contains all operations that are needed to manage the collection of chat groups.
+		ChatServer class: it represents ChatServer.
+		Remote class: it is base class for all remote classes.
+		RemoteChatClient class: represents a remote chat client. it receives method calls from chatClient object, marshles these requests in form of messages, and sends them to chatClient on 
+		remote machine
+		RemoteChatServer class: represents a remote chat server. it receives method calls from chatServer object, marshles these requests in form of messages, and sends them to chatServer on 
+		remote machine
+		MembersCheckerTask class:  it is task that can be given to the threadpool to execute. it is tiggered by chatserver object to check and remove any dead chatClients.
+
+	test:	it is the testing package and contains		
+		BroadCaster class: it is task that can be given to the threadpool to execute. its tiggered by ChatClientTestApp to periodically  calls broadcastData() method in ChatClientTestApp application.
+		ChatClientTestApp class: it extends ChatClientImp and overwrite some of its methods to perform the test whis is sending broadcast message each 5 second (Configurable) 
