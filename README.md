@@ -27,3 +27,26 @@ The developed application uses a chat server as a central server to bootstrap cl
 
 When a chat client has a message that needs to be broadcast, it sends the message to all other members in its peer group and also to the central chat server. Then, the central server sends this message to one client in every group. Each of those clients forwards the message to the other members existing in its own group. This way, all chat clients eventually get the message and the task is distributed instead of relying on one client or on the central server.
 
+
+
+## Package Structure
+	The main folder contains :
+	
+- src: It contains java source files
+
+- bin: It contains java classes files (should not be deleted manually)
+
+- aspectjrt.jar: It is an aspectj runtime library needed by the application
+
+- chatApp.jar: It is the runnable chat application
+
+- makefile: It is used to compile java classes(make all) and remove classes (make clean)
+
+- MANIFEST.MF: It is needed to create chatApp.jar.
+
+- ChatClient.sh: It is used to run chat application client and to create chatApp.jar if it does not exist
+
+- ChatServer.sh: It is used to run chat application server and to create chatApp.jar if it does not exist
+	
+
+
