@@ -48,6 +48,6 @@ When a chat client has a message that needs to be broadcast, it sends the messag
 
 - **ChatServer.sh**: It is used to run chat application server and to create chatApp.jar if it does not exist
 	
-- **specification.txt**: It includes detailed information about the application requirements and features
+- **specification.txt**: It includes detailed information about the application's requirements and features
 
 
