@@ -50,4 +50,13 @@ When a chat client has a message that needs to be broadcast, it sends the messag
 	
 - **specification.txt**: It includes detailed information about the application's requirements and features
 
+## Execution
+- To run the ChatServer, you can use the script ChatServer.sh as following:
+		
+		ChatServer.sh LISTENING-PORT-NUM
 
+- To run the ChatClient, you can use the script ChatClient.sh as following:
+		
+		ChatClient.sh LISTENING-PORT-NUM SERVER-HOST SERVER-PORT
+
+	where the client ID will be the machine name on which the client is running.
