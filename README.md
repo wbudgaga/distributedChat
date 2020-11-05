@@ -9,7 +9,7 @@ The implementaion of this application supports the following features:
   - Private messaging
   - Group messaging
   - Broadcasting
-- Creating GUI to simplify the interactive with the chat application 
+- Creating GUI to simplify the interactive with the application features
 - Configuring the application at runtime
 - Scalability
 - Logging
