@@ -32,22 +32,22 @@ When a chat client has a message that needs to be broadcast, it sends the messag
 ## Package Structure
 	The main folder contains:
 	
-- src: It contains java source files
+- **src**: It contains java source files
 
-- bin: It contains java classes files (should not be deleted manually)
+- **bin**: It contains java classes files (should not be deleted manually)
 
-- aspectjrt.jar: It is an aspectj runtime library needed by the application
+- **aspectjrt.jar**: It is an aspectj runtime library needed by the application
 
-- chatApp.jar: It is the runnable chat application
+- **chatApp.jar**: It is the runnable chat application
 
-- makefile: It is used to compile java classes(make all) and remove classes (make clean)
+- **makefile**: It is used to compile java classes(make all) and remove classes (make clean)
 
-- MANIFEST.MF: It is needed to create chatApp.jar
+- **MANIFEST.MF**: It is needed to create chatApp.jar
 
-- ChatClient.sh: It is used to run chat application client and to create chatApp.jar if it does not exist
+- **ChatClient.sh**: It is used to run chat application client and to create chatApp.jar if it does not exist
 
-- ChatServer.sh: It is used to run chat application server and to create chatApp.jar if it does not exist
+- **ChatServer.sh**: It is used to run chat application server and to create chatApp.jar if it does not exist
 	
-- specification.txt: It includes detailed information about the application requirements and features
+- **specification.txt**: It includes detailed information about the application requirements and features
 
 
