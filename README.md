@@ -19,6 +19,14 @@ The implementaion of this application includes the following features:
 
 Some Of these features have been achieved by relying of Spring Framework
 
+
+## Scalability
+Unlike the naive approach where the central chat server receives a message from a client and broadcasts the message to all other clients, 
+The developed application uses a chat server as a central server to bootstrap clients that want to join the chat session. All chat clients are aware of this central server. Every chat client is in a group (called peer group), which has a peer-group ID. The group members have their own member IDs. When a client joins a chat session, the central server informs the client about its peer group ID and group member IDs. Each client communicates with a small set of other clients (peers) and this set is determined by the central server.
+
+When a chat client has a message that needs to be broadcast, it sends the message to all other members in its peer group and also to the central chat server. Then, the central server sends this message to one client in every group. Each of those clients forwards the message to the other members existing in its own group. This way, all chat clients eventually get the message and the task is distributed instead of relying on one client or on the central server.
+
+
 ## The Used Aspects Package
 - **BaseAspect.aj** contains the methodes that are used by subaspects.
 - **EncryptingAspect.aj** inherits BaseAspect and contains pointcuts, advices, and methods needed to deal with encryption things.
@@ -44,14 +52,6 @@ Some Of these features have been achieved by relying of Spring Framework
 
 ## Error handling, 
 - I have intercepted all thrown exceptions and printed appropriate messages.
-
-
-## Scalability
-Unlike the naive approach where the central chat server receives a message from a client and broadcasts the message to all other clients, 
-The developed application uses a chat server as a central server to bootstrap clients that want to join the chat session. All chat clients are aware of this central server. Every chat client is in a group (called peer group), which has a peer-group ID. The group members have their own member IDs. When a client joins a chat session, the central server informs the client about its peer group ID and group member IDs. Each client communicates with a small set of other clients (peers) and this set is determined by the central server.
-
-When a chat client has a message that needs to be broadcast, it sends the message to all other members in its peer group and also to the central chat server. Then, the central server sends this message to one client in every group. Each of those clients forwards the message to the other members existing in its own group. This way, all chat clients eventually get the message and the task is distributed instead of relying on one client or on the central server.
-
 
 
 ## Package Structure
