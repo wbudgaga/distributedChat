@@ -25,6 +25,25 @@ Some Of these features have been achieved by relying of Spring Framework
 - **LoggingAspect.aj** inherits BaseAspect and contains pointcuts, advices, and methods needed to deal with logging things.
 - **ExceptionHandlingAspect.aj** contains pointcut, advice needed to catch the thrown exceptions and prints appropriate messages.
 
+## Aspectized Features 
+### Logging
+- I have intercepted the constructors of the server and client applictions to create only one the logger instance 
+		  that is used to log the registration requests at the server-side and sending of messages at client-side.
+
+- I have intercepted the method joiningRequestReceivedthe() that is used by the server to receive registration requests.
+
+- I have intercepted the method sendData() when the caller is the client to to intercept only the messages sent by the clients.
+
+## Encryption 
+- I have intercepted the constructors of the server and client applictions to create only one the encryptor instance 
+		  that is used to encrypt and decrypt messages sent between clients and server.
+
+- I have intercepted the method sendByteData() to encrypt messages before sending.
+
+- I have intercepted the method receiveMessageFrom() to decrypt all received messages.
+
+## Error handling, 
+- I have intercepted all thrown exceptions and printed appropriate messages.
 
 
 ## Scalability
