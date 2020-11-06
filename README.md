@@ -17,8 +17,14 @@ The implementaion of this application includes the following features:
 - Synchronization
 - Failure Handling
 
+Some Of these features have been achieved by relying of Spring Framework
 
-....
+This package includes four aspects:
+	- BaseAspect.aj: 		contains the methodes that are used by subaspects.
+	- EncryptingAspect.aj: 		inherits BaseAspect and contains pointcuts, advices, and methods needed to deal with encryption things.
+	- LoggingAspect.aj: 		inherits BaseAspect and contains pointcuts, advices, and methods needed to deal with logging things.
+	- ExceptionHandlingAspect.aj: 	contains pointcut, advice needed to catch the thrown exceptions and prints appropriate messages.
+
 
 
 ## Scalability
